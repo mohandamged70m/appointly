@@ -1,24 +1,30 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+## Supabase setup
 
-First, run the development server:
+The app uses Supabase Auth and row-level security for account-specific data.
+
+1. Add `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` to
+   `.env.local`. See [`.env.example`](./.env.example).
+2. Run [`supabase/schema.sql`](./supabase/schema.sql) in the Supabase SQL
+   Editor. This script is for a new project; it does not migrate existing data.
+3. Start the app and create an account at `/sign-up`:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000/sign-up](http://localhost:3000/sign-up). If email
+confirmation is enabled in Supabase, confirm the account before signing in.
+Make sure `http://localhost:3000` is an allowed redirect URL in the Supabase
+Auth URL Configuration.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Development
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run lint
+npm run build
+```
 
 ## Learn More
 
